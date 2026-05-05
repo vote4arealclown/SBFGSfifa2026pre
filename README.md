@@ -2,6 +2,9 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![EN](https://img.shields.io/badge/lang-EN-brightgreen)
+![ES](https://img.shields.io/badge/lang-ES-brightgreen)
+![JA](https://img.shields.io/badge/lang-JA-brightgreen)
 
 > **EN:** A comprehensive local data warehouse and betting analytics platform for the 2026 FIFA World Cup.
 >

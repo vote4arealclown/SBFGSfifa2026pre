@@ -1,0 +1,11 @@
+# GitHub Linguist overrides
+
+# Jupyter notebooks: count as Python instead of JSON
+*.ipynb linguist-language=Python
+
+# SQLite database: exclude from language stats
+data/*.db linguist-vendored
+data/*.db binary
+
+# Shell scripts
+tui*.sh linguist-language=Shell
