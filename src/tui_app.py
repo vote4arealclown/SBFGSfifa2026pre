@@ -57,7 +57,7 @@ class ReportScreen(Screen):
         super().__init__(**kwargs)
 
     def compose(self) -> ComposeResult:
-        t = self.t
+        t = self.app.translator
         yield Header(show_clock=False)
         yield Static(
             f"[b]{self.report_title}[/b]  |  {t.t('title_rows', n=len(self.df))}",
