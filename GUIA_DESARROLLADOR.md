@@ -326,9 +326,14 @@ La TUI usa [Textual](https://textual.textualize.io/), un framework moderno de Py
 
 Todas las cadenas de la UI viven en `src/i18n.py`. Para agregar un nuevo idioma:
 
-1. Agrega una nueva clave de primer nivel a `_TRANSLATIONS` (ej. `"fr"`).
+1. Agrega una nueva clave de primer nivel a `_TRANSLATIONS` (ej. `"ja"`).
 2. Agrega mapeos de columnas a `_COLUMN_MAP`.
-3. Lanza con `python src/tui_app.py --lang fr`.
+3. Lanza con `python src/tui_app.py --lang ja`.
+
+Idiomas actualmente soportados:
+- `en` — Inglés
+- `es` — Español
+- `ja` — Japonés
 
 ### Tipos de Pantalla
 

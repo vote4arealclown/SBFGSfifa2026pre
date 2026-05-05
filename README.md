@@ -46,11 +46,13 @@ make reports      # Generate all CSV exports
 ```bash
 ./tui.sh       # English (default)
 ./tui_es.sh    # Spanish
+./tui_ja.sh    # Japanese
 ```
 
 Or pass `--lang` directly:
 ```bash
 .venv/bin/python src/tui_app.py --lang es
+.venv/bin/python src/tui_app.py --lang ja
 ```
 
 | Key | Report | Key | Report |
@@ -152,9 +154,11 @@ sbfg2026/
 ├── requirements.txt
 ├── tui.sh                        # TUI launcher (English)
 ├── tui_es.sh                     # TUI launcher (Spanish)
+├── tui_ja.sh                     # TUI launcher (Japanese)
 ├── README.md                     # This file
 ├── DEVELOPER_GUIDE.md            # Contributor documentation
-└── GUIA_DESARROLLADOR.md         # Guía del desarrollador (español)
+├── GUIA_DESARROLLADOR.md         # Guía del desarrollador (español)
+└── DEVELOPER_GUIDE_JA.md         # 開発者ガイド (日本語)
 ```
 
 ---

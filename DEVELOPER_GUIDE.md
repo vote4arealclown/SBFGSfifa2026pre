@@ -323,9 +323,14 @@ The TUI uses [Textual](https://textual.textualize.io/), a modern Python framewor
 
 All UI strings live in `src/i18n.py`. To add a new language:
 
-1. Add a new top-level key to `_TRANSLATIONS` (e.g., `"fr"`).
+1. Add a new top-level key to `_TRANSLATIONS` (e.g., `"ja"`).
 2. Add column mappings to `_COLUMN_MAP`.
-3. Launch with `python src/tui_app.py --lang fr`.
+3. Launch with `python src/tui_app.py --lang ja`.
+
+Currently supported languages:
+- `en` — English
+- `es` — Spanish
+- `ja` — Japanese
 
 ### Screen Types
 

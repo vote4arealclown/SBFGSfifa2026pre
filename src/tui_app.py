@@ -522,7 +522,7 @@ class SBFG2026TUI(App):
 
 def main():
     parser = argparse.ArgumentParser(description="SBFG2026 TUI")
-    parser.add_argument("--lang", choices=["en", "es"], default="en", help="UI language")
+    parser.add_argument("--lang", choices=["en", "es", "ja"], default="en", help="UI language")
     args = parser.parse_args()
     app = SBFG2026TUI(lang=args.lang)
     app.run()
