@@ -288,39 +288,36 @@ class MarkdownReportScreen(Screen):
 class MainScreen(Screen):
     """Main menu screen with sidebar navigation."""
 
+    BINDINGS = [
+        Binding("q", "quit", "Quit"),
+        Binding("1", "show_scorers", "Top Scorers"),
+        Binding("2", "show_assisters", "Top Assisters"),
+        Binding("3", "show_xg", "Top xG"),
+        Binding("4", "show_defense", "Defense"),
+        Binding("5", "show_keepers", "Goalkeepers"),
+        Binding("6", "show_teams", "Teams"),
+        Binding("7", "show_roster", "Roster"),
+        Binding("8", "show_venues", "Venues"),
+        Binding("9", "show_tiers", "Tiers"),
+        Binding("0", "show_penalties", "Penalties"),
+        Binding("p", "show_setpieces", "Set Pieces"),
+        Binding("d", "show_dates", "Key Dates"),
+        Binding("l", "show_checklist", "Checklist"),
+        Binding("b", "show_scenarios", "Scenarios"),
+        Binding("e", "show_environment", "Environment"),
+        Binding("r", "show_bankroll", "Bankroll"),
+        Binding("g", "show_glossary", "Glossary"),
+        Binding("s", "show_search", "Search"),
+        Binding("c", "show_counts", "DB Counts"),
+    ]
+
     def __init__(self, translator: Translator = None, **kwargs):
         self._translator = translator
-        self._build_bindings()
         super().__init__(**kwargs)
 
     @property
     def t(self) -> Translator:
         return self._translator or self.app.translator
-
-    def _build_bindings(self):
-        t = self.t
-        self.BINDINGS = [
-            Binding("q", "quit", t.t("bind_quit")),
-            Binding("1", "show_scorers", t.t("bind_scorers")),
-            Binding("2", "show_assisters", t.t("bind_assisters")),
-            Binding("3", "show_xg", t.t("bind_xg")),
-            Binding("4", "show_defense", t.t("bind_defense")),
-            Binding("5", "show_keepers", t.t("bind_keepers")),
-            Binding("6", "show_teams", t.t("bind_teams")),
-            Binding("7", "show_roster", t.t("bind_roster")),
-            Binding("8", "show_venues", t.t("bind_venues")),
-            Binding("9", "show_tiers", t.t("bind_tiers")),
-            Binding("0", "show_penalties", t.t("bind_penalties")),
-            Binding("p", "show_setpieces", t.t("bind_setpieces")),
-            Binding("d", "show_dates", t.t("bind_dates")),
-            Binding("l", "show_checklist", t.t("bind_checklist")),
-            Binding("b", "show_scenarios", t.t("bind_scenarios")),
-            Binding("e", "show_environment", t.t("bind_environment")),
-            Binding("r", "show_bankroll", t.t("bind_bankroll")),
-            Binding("g", "show_glossary", t.t("bind_glossary")),
-            Binding("s", "show_search", t.t("bind_search")),
-            Binding("c", "show_counts", t.t("bind_counts")),
-        ]
 
     CSS = """
     Screen { align: center middle; }
@@ -375,7 +372,58 @@ class MainScreen(Screen):
         yield Footer()
 
     def on_mount(self) -> None:
+        self._update_binding_descriptions()
         self._update_counts()
+
+    def _update_binding_descriptions(self) -> None:
+        from textual.binding import Binding, BindingsMap
+
+        t = self.t
+        desc_map = {
+            "quit": "bind_quit",
+            "show_scorers": "bind_scorers",
+            "show_assisters": "bind_assisters",
+            "show_xg": "bind_xg",
+            "show_defense": "bind_defense",
+            "show_keepers": "bind_keepers",
+            "show_teams": "bind_teams",
+            "show_roster": "bind_roster",
+            "show_venues": "bind_venues",
+            "show_tiers": "bind_tiers",
+            "show_penalties": "bind_penalties",
+            "show_setpieces": "bind_setpieces",
+            "show_dates": "bind_dates",
+            "show_checklist": "bind_checklist",
+            "show_scenarios": "bind_scenarios",
+            "show_environment": "bind_environment",
+            "show_bankroll": "bind_bankroll",
+            "show_glossary": "bind_glossary",
+            "show_search": "bind_search",
+            "show_counts": "bind_counts",
+        }
+        new_bindings: list[Binding] = []
+        for key, bindings in self._bindings.key_to_bindings.items():
+            for binding in bindings:
+                trans_key = desc_map.get(binding.action)
+                if trans_key:
+                    new_bindings.append(
+                        Binding(
+                            key=binding.key,
+                            action=binding.action,
+                            description=t.t(trans_key),
+                            show=binding.show,
+                            key_display=binding.key_display,
+                            priority=binding.priority,
+                            tooltip=binding.tooltip,
+                            id=binding.id,
+                            system=binding.system,
+                            group=binding.group,
+                        )
+                    )
+                else:
+                    new_bindings.append(binding)
+        self._bindings = BindingsMap(new_bindings)
+        self.refresh_bindings()
 
     def _update_counts(self) -> None:
         t = self.t
