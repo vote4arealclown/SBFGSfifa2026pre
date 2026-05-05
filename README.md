@@ -44,7 +44,13 @@ make reports      # Generate all CSV exports
 ### Launch the Interactive TUI
 
 ```bash
-./tui.sh
+./tui.sh       # English (default)
+./tui_es.sh    # Spanish
+```
+
+Or pass `--lang` directly:
+```bash
+.venv/bin/python src/tui_app.py --lang es
 ```
 
 | Key | Report | Key | Report |
@@ -144,7 +150,8 @@ sbfg2026/
 ├── Makefile
 ├── pyproject.toml
 ├── requirements.txt
-├── tui.sh                        # TUI launcher
+├── tui.sh                        # TUI launcher (English)
+├── tui_es.sh                     # TUI launcher (Spanish)
 ├── README.md                     # This file
 ├── DEVELOPER_GUIDE.md            # Contributor documentation
 └── GUIA_DESARROLLADOR.md         # Guía del desarrollador (español)
@@ -197,7 +204,7 @@ make help          # Show all available commands
 make install       # Create venv and install dependencies
 make build-all     # Full build: install + reports
 make reports       # Generate all CSV reports
-make tui           # Launch the interactive terminal UI
+make tui           # Launch the interactive terminal UI (English)
 make cli           # Launch the CLI
 make clean         # Remove generated files and database
 make test          # Run basic validation tests

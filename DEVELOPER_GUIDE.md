@@ -116,6 +116,7 @@ src/
   reports.py             # All SQL queries return pandas DataFrames
   betting_utils.py       # Pure functions, no side effects
   cli.py                 # argparse commands call reports + utils
+  i18n.py                # Bilingual string translations (EN/ES)
   tui_app.py             # Textual screens compose reports + utils
 ```
 
@@ -318,6 +319,14 @@ p_calc.set_defaults(func=cmd_my_calc)
 
 The TUI uses [Textual](https://textual.textualize.io/), a modern Python framework for terminal apps.
 
+### Internationalization
+
+All UI strings live in `src/i18n.py`. To add a new language:
+
+1. Add a new top-level key to `_TRANSLATIONS` (e.g., `"fr"`).
+2. Add column mappings to `_COLUMN_MAP`.
+3. Launch with `python src/tui_app.py --lang fr`.
+
 ### Screen Types
 
 | Screen | Use For |
@@ -418,7 +427,7 @@ Before pushing to git or releasing:
 - [ ] `make test` passes
 - [ ] `make build-db` completes without errors
 - [ ] `make reports` generates all 16 CSV files
-- [ ] `./tui.sh` launches and all screens navigate correctly
+- [ ] `./tui.sh` and `./tui_es.sh` launch and all screens navigate correctly
 - [ ] `src/cli.py counts` shows expected row counts
 - [ ] README is up to date
 - [ ] DEVELOPER_GUIDE reflects current architecture
