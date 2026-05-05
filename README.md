@@ -3,7 +3,11 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **A comprehensive local data warehouse and betting analytics platform for the 2026 FIFA World Cup.**
+> **EN:** A comprehensive local data warehouse and betting analytics platform for the 2026 FIFA World Cup.
+>
+> **ES:** Una plataforma local completa de análisis de apuestas e inteligencia deportiva para la Copa Mundial de la FIFA 2026.
+>
+> **JA:** 2026年FIFAワールドカップ向けの包括的なローカルデータ倉庫およびベッティング分析プラットフォーム。
 
 Built on the complete **FIFA World Cup 2022** dataset from public open-data repositories, SBFG2026 transforms tournament complexity into actionable intelligence—giving you a structural edge before the market catches up.
 
